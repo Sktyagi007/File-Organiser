@@ -1,13 +1,7 @@
-// let input = process.argv;
-// console.log(input);
-// ['pathnode','pathtofile','input_pass']
-// let input = process.argv[2];
-// console.log(input);
 
 let fs = require("fs");
 let path = require("path");
 let folderPath = process.argv[2];
-// console.log(folderPath);
 
 let folderExists = fs.existsSync(folderPath);
 
@@ -22,13 +16,10 @@ let extentions = {
 
 if(folderExists){
     let files = fs.readdirSync(folderPath);
-    // console.log(files);
     for(let i=0; i<files.length;i++){
         let ext = path.extname(files[i]);
         let nameOfFolder = giveFolderName(ext);
-        // console.log("Ext--",ext,"Folder--",nameOfFolder);
         let pathtOfFile = path.join(folderPath,nameOfFolder); 
-        // console.log(pathtOfFile);
         let exist = fs.existsSync(pathtOfFile);
         if(exist){
             moveFile(folderPath,pathtOfFile,files[i]);
